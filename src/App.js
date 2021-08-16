@@ -20,7 +20,7 @@ function CameraControls(){
       ref={controlsRef}
       args={[camera, domElement]}
       autoRotate
-      autoRotateSpeed={-0.2}
+      autoRotateSpeed={-0.1}
     />
   );
 }
@@ -32,8 +32,10 @@ function Points() {
   let t = 0;
   let f = 0.002;
   let a = 3;
+
+  
   const graph = useCallback((x, z) => {
-    return Math.sin(f * (x ** 2 + z ** 2 + t)) * a;
+    return Math.sin(f * (x ** 3 + z ** 2 + t)) * a;
   }, [t, f, a])
 
   const count = 100
@@ -65,7 +67,7 @@ function Points() {
         let z = sep * (zi - count / 2);
 
         positions[i + 1] = graph(x, z);
-        i += 3;
+        i += 3
       }
     }
 
